@@ -90,7 +90,9 @@ public class EventHandlerEntity {
                 }
             }
         }
-        syncBaubles(player, baubles);
+        if (!player.world.isRemote) {
+            syncBaubles(player, baubles);
+        }
     }
 
     @SubscribeEvent
