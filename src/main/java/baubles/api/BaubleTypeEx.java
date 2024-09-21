@@ -55,3 +55,5 @@ public class BaubleTypeEx {
         return slots;
     }
 }
+
+//todo type define

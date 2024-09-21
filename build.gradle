@@ -126,6 +126,17 @@ tasks.register('copyResources', Copy) {
     into 'build/classes/java/main'
 }
 
+tasks.register('apiJar', Jar) {
+    archiveClassifier = 'api'
+    from sourceSets.main.output
+    from sourceSets.main.allSource
+    include 'baubles/api/**'
+}
+
+artifacts {
+    archives apiJar
+}
+
 /*======== 解决在 Intellij 中資源文件的問題（資源文件不拷貝至 build/classes） ========*/
 
 /*=== 很奇怪，終端裏頭運行 ./gradlew prepareRunClient 不出問題，來 intellij 裏頭就不管===*/
