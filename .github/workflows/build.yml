@@ -3,7 +3,7 @@ on: [workflow_dispatch, push]
 permissions:
   contents: write
   pull-requests: write
-  releases: write  # Required to create releases and upload assets
+  packages: write  # Required to create releases and upload assets
   
 jobs:
   build:
