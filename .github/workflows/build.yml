@@ -19,7 +19,7 @@ jobs:
       - name: Find the versioned .jar file
         id: BaublesEX-More-Slots
         run: |
-          JAR_NAME=*.jar
+          JAR_NAME=/build/libs/BaublesEX-More-Slots-*.jar
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
       # Upload the .jar file
