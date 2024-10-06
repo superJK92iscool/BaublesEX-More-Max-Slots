@@ -14,16 +14,10 @@ jobs:
 
       # Capture the .jar file name dynamically (adjust the path if necessary)
       - name: Find the versioned .jar file
-        id: jar-name
+        id: BaublesEX-More-Slots-$version
         run: |
           JAR_NAME=$(ls build/libs/*.jar | grep -E '.*\.jar')
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
-
-      # Optionally rename the .jar to something generic (without the version number)
-      - name: Rename the .jar file (optional)
-        run: |
-          mv $JAR_NAME build/libs/BaublesEx-More-Slots.jar
-        if: success()  # Only rename if the jar was found
 
       # Upload the .jar file
       - name: Upload .jar artifact
