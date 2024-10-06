@@ -27,6 +27,6 @@ jobs:
           path: ${{ env.JAR_NAME }}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
       - uses: Shopify/upload-to-release@v2.0.0
         with:
-          name: my-artifact
+          name: $JAR_NAME
           path: build/lib/${{ env.JAR_NAME }}
           repo-token: ${{ secrets.AUTO_RELEASE }}
