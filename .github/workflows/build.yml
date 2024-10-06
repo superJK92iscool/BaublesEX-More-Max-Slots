@@ -19,7 +19,7 @@ jobs:
       - name: Find the versioned .jar file
         id: BaublesEX-More-Slots
         run: |
-          JAR_NAME=$(ls *.jar | grep -E '.*.jar')
+          JAR_NAME=BaublesEX-More-Slots-${version}
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
       # Upload the .jar file
