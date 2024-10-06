@@ -76,7 +76,7 @@ public class Config {
     }
 
     private static int defaultSlots(String key, int value) {
-        return config.getInt(key, "general.slots", value, 0, 100, "");
+        return config.getInt(key, "general.slots", value, 0, 255, "");
     }
 
     public static class ConfigChangeListener {
