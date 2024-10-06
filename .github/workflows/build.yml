@@ -19,14 +19,14 @@ jobs:
       - name: Find the versioned .jar file
         id: BaublesEX-More-Slots
         run: |
-          JAR_NAME=BaublesEX-More-Slots-*.jar
+          JAR_NAME=*.jar
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
       # Upload the .jar file
       - name: Upload .jar artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.JAR_NAME }}
+          name: BaublesEX-More-Slots-*
           path: ${{ env.JAR_NAME }}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
       - uses: googleapis/release-please-action@v4
         with:
