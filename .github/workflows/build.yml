@@ -20,3 +20,9 @@ jobs:
         with:
           name: BaublesEX More Slots JAR
           path: build/libs/BaublesEX-More-Slots-*.jar
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: BaublesEX-More-Slots-*
+          path: ./downloads
+
