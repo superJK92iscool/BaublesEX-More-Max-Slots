@@ -1,6 +1,9 @@
 name: Build JAR
-on: [ workflow_dispatch]
-
+on: [ workflow_dispatch, push ]
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,8 +28,12 @@ jobs:
         with:
           name: ${{ JAR_NAME }}
           path: ${{ env.JAR_NAME }}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
-      - uses: Shopify/upload-to-release@v2.0.0
+      - uses: googleapis/release-please-action@v4
         with:
-          name: ${{ env.JAR_NAME }}
-          path: build/lib/${{ env.JAR_NAME }}
-          repo-token: ${{ secrets.AUTO_RELEASE }}
+          # this assumes that you have created a personal access token
+          # (PAT) and configured it as a GitHub action secret named
+          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
+          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          # this is a built-in strategy in release-please, see "Action Inputs"
+          # for more options
+          release-type: simple
