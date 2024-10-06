@@ -23,6 +23,6 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: BaublesEX-More-Slots-*
+          name: BaublesEX-More-Slots-${version}
           path: ./downloads
 
