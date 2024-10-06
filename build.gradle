@@ -130,11 +130,10 @@ tasks.register('apiJar', Jar) {
     archiveClassifier = 'api'
     from sourceSets.main.output
     from sourceSets.main.allSource
-    include 'baubles/api/**'
 }
 
 artifacts {
-    archives apiJar
+    jar
 }
 
 /*======== 解决在 Intellij 中資源文件的問題（資源文件不拷貝至 build/classes） ========*/
