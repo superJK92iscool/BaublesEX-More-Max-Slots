@@ -11,22 +11,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Your build step, replace with your specific build command for the mod
+      # Build the mod
       - name: Build mod
         run: ./gradlew build
 
-      # Capture the .jar file name dynamically (adjust the path if necessary)
+      # Capture the version number from build.gradle
+      - name: Get version from build.gradle
+        id: get_version
+        run: |
+          VERSION=$(grep 'version =' build.gradle | sed 's/.*= \(.*\)/\1/' | tr -d ' ')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      # Find the JAR file dynamically
       - name: Find the versioned .jar file
         id: find_jar
         run: |
           JAR_NAME=$(ls build/libs/BaublesEX-More-Slots-*.jar)
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
-      # Upload the .jar file
+      # Upload the .jar file with version in the name
       - name: Upload .jar artifact
         uses: actions/upload-artifact@v3
         with:
-          name: BaublesEX-More-Slots
+          name: BaublesEX-More-Slots-${{ env.VERSION }}
           path: ${{ env.JAR_NAME }}
           
       - uses: googleapis/release-please-action@v4
