@@ -3,7 +3,7 @@ on: [workflow_dispatch, push]
 permissions:
   contents: write
   pull-requests: write
-  packages: write  # Required to upload release assets
+  releases: write  # Required to create releases and upload assets
   
 jobs:
   build:
@@ -50,3 +50,5 @@ jobs:
           asset_path: ${{ env.JAR_NAME }}
           asset_name: BaublesEX-More-Slots-${{ env.VERSION }}.jar
           asset_content_type: application/java-archive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Ensure it's being passed here too
