@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: BaublesEX More Slots JAR
-          path: build/libs/BaulbesEX-More-Slots-*.jar
+          path: build/libs/BaublesEX-More-Slots-*.jar
