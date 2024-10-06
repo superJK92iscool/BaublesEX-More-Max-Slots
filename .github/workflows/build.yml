@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mod-jar
-          path: ${{ env.JAR_NAME}}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
+          path: ${{ env.JAR_NAME }}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
