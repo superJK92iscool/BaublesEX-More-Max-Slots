@@ -1,5 +1,5 @@
 name: Build JAR
-on: [ workflow_dispatch, push ]
+on: [workflow_dispatch, push]
 permissions:
   contents: write
   pull-requests: write
@@ -17,23 +17,19 @@ jobs:
 
       # Capture the .jar file name dynamically (adjust the path if necessary)
       - name: Find the versioned .jar file
-        id: BaublesEX-More-Slots
+        id: find_jar
         run: |
-          JAR_NAME=/build/libs/BaublesEX-More-Slots-*.jar
+          JAR_NAME=$(ls build/libs/BaublesEX-More-Slots-*.jar)
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
       # Upload the .jar file
       - name: Upload .jar artifact
         uses: actions/upload-artifact@v3
         with:
-          name: BaublesEX-More-Slots-*
-          path: ${{ env.JAR_NAME }}  # Or ${{ env.JAR_NAME }} if you want to keep the original name
+          name: BaublesEX-More-Slots
+          path: ${{ env.JAR_NAME }}
+          
       - uses: googleapis/release-please-action@v4
         with:
-          # this assumes that you have created a personal access token
-          # (PAT) and configured it as a GitHub action secret named
-          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
           token: ${{ secrets.AUTO_RELEASE }}
-          # this is a built-in strategy in release-please, see "Action Inputs"
-          # for more options
           release-type: simple
